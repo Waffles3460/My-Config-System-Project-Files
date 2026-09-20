@@ -165,6 +165,7 @@
 	kdePackages.bluedevil
 	cmatrix
 	clock-rs
+	fish
     ];
     shell = pkgs.zsh;
   };
