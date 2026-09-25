@@ -60,6 +60,23 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # Hyprland pencere yöneticisini ve Wayland desteğini aktif eder
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true; # X11 bağımlı uygulamalar için XWayland desteği
+  };
+
+# XDG Portal desteği (ekran paylaşımı ve dosya seçiciler için gereklidir)
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+# Electron/Chromium uygulamalarının varsayılan olarak Wayland modunda çalışması için
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   # Grafik hızlandırmayı ve 32-bit kütüphaneleri aç
   hardware.graphics = {
   enable = true;
@@ -110,6 +127,8 @@
   };
 
   services.blueman.enable = true;
+
+  services.flatpak.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -166,6 +185,19 @@
 	cmatrix
 	clock-rs
 	fish
+	yt-dlp
+	jdk17
+	steam-run
+	zoom-us
+	waybar
+	dunst
+	hyprpaper
+	grim
+  	slurp
+	wl-clipboard
+	swaybg
+	pavucontrol
+	hyprlock
     ];
     shell = pkgs.zsh;
   };
